@@ -14,40 +14,28 @@ concept: expectation=  do work +faith
 
 */
 
-public class PrintNumbers {
+public class NumberMathematics {
 
-    static void printDecreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        System.out.println(n);// work
-        printDecreasing(n-1);//faith
+
+    public static void main(String[] str) {
+        System.out.println(findFactorial(6));
+        System.out.println(findPower(2, 10));
 
     }
-    static void printIncreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        printIncreasing(n-1);//faith
-        System.out.println(n);// work
-    }
-    static void printDecreasingIncreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        System.out.println(n);// work
-        printDecreasingIncreasing(n-1);//faith
-        System.out.println(n);// work
+
+    private static int findFactorial(int i) {
+        if (i == 0)// base condition
+            return 1;
+        return i * findFactorial(i - 1);//work+ faith
+
     }
 
-    public static void main(String str[])
-    {
-        printDecreasing(5);
-        System.out.println("-----");
-        printIncreasing(5);
-        System.out.println("-----");
-        printDecreasingIncreasing(5);
-        }
+    private static int findPower(int i, int j) {
+        if (j == 0)// base condition
+            return 1;
+        return i * findPower(i, j - 1);//work+ faith
+
+    }
 }
 /*
 Output :

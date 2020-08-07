@@ -14,40 +14,25 @@ concept: expectation=  do work +faith
 
 */
 
-public class PrintNumbers {
+public class TowerOfHanoi {
 
-    static void printDecreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        System.out.println(n);// work
-        printDecreasing(n-1);//faith
+
+    public static void main(String[] str) {
+        toh("A", "C", "B", 25);
 
     }
-    static void printIncreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        printIncreasing(n-1);//faith
-        System.out.println(n);// work
-    }
-    static void printDecreasingIncreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        System.out.println(n);// work
-        printDecreasingIncreasing(n-1);//faith
-        System.out.println(n);// work
-    }
 
-    public static void main(String str[])
-    {
-        printDecreasing(5);
-        System.out.println("-----");
-        printIncreasing(5);
-        System.out.println("-----");
-        printDecreasingIncreasing(5);
+    private static void toh(String src, String dest, String helper, int n) {
+
+        if (n == 1) { //base condition
+            System.out.println("Move nth " + n + " peg " + src + " to  peg " + dest);
+        } else {
+            toh(src, helper, dest, n - 1);// faith 1
+            System.out.println("Move nth " + n + " peg " + src + " to  peg " + dest);// work
+            toh(helper, dest, src, n - 1);
         }
+    }
+
 }
 /*
 Output :

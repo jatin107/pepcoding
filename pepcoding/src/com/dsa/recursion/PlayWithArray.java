@@ -14,40 +14,70 @@ concept: expectation=  do work +faith
 
 */
 
-public class PrintNumbers {
+public class PlayWithArray {
 
-    static void printDecreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        System.out.println(n);// work
-        printDecreasing(n-1);//faith
+
+    public static void main(String[] str) {
+        int[] ar = {1, 2, 3, 18, 4};
+        // printArray(ar,ar.length);
+        //  printArrayRevese(ar,ar.length);
+        System.out.println(findlargest(ar, ar.length, ar[ar.length - 1]));
+        System.out.println(ar[findlargestIndex(ar, 0)]);
 
     }
-    static void printIncreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        printIncreasing(n-1);//faith
-        System.out.println(n);// work
-    }
-    static void printDecreasingIncreasing(int n)
-    {
-        if(n==0)// base case
-            return;
-        System.out.println(n);// work
-        printDecreasingIncreasing(n-1);//faith
-        System.out.println(n);// work
-    }
 
-    public static void main(String str[])
-    {
-        printDecreasing(5);
-        System.out.println("-----");
-        printIncreasing(5);
-        System.out.println("-----");
-        printDecreasingIncreasing(5);
+    private static int findlargestIndex(int[] ar, int i) {
+        if (i == ar.length - 1)// base condition
+            return i;// current max index
+        else {
+            int restMax = findlargestIndex(ar, i + 1);
+            if (ar[i] > ar[restMax])
+                return i;
+            else
+                return restMax;
+
+
         }
+
+    }
+
+    private static int findlargest(int[] ar, int length, int max) {
+        if (length == 0)//base condition
+            return max;
+        int localmax = findlargest(ar, length - 1, ar[length - 1]); //faith : find the max in short array
+        if (localmax > max)
+            return localmax;
+        else
+            return max;
+
+
+    }
+
+    private static void printArray(int[] ar, int i) {
+
+        if (i == 0) { //base condition
+
+        } else {
+            printArray(ar, i - 1);
+            System.out.println(ar[i - 1]);
+
+
+        }
+    }
+
+    private static void printArrayRevese(int[] ar, int i) {
+
+        if (i == 0) { //base condition
+
+        } else {
+
+            System.out.println(ar[i - 1]);
+            printArrayRevese(ar, i - 1);
+
+
+        }
+    }
+
 }
 /*
 Output :
